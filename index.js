@@ -6,7 +6,7 @@ const express = require('express');
 const ejsMate = require('ejs-mate');
 const methodOverride = require('method-override');
 const mongoose = require('mongoose');
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 
 const session = require('express-session');
