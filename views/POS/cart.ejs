@@ -1,0 +1,153 @@
+<% layout('layouts/boilerplate') %>
+    <div class="card">
+        <div class="card-body mx-2">
+            <div class="container">
+                <p class="my-1 mx-0 mb-5" style="font-size: 30px;">Current Cart</p>
+                <div class="row">
+                    <div class="col-6">
+                        <ul class="list-unstyled col-4">
+                            <!-- <li class="text-black">John Doe</li> -->
+                            <li class="text-black mt-1">
+                                <%= new Date() %>
+                            </li>
+                        </ul>
+                    </div>
+
+
+                    <div class="btn-group col-4 offset-2 d-flex align-items-center">
+                        <div class="mx-1">
+                            <a href="/POS"><button class="btn btn-sm btn-primary">Add Item</button></a>
+                        </div>
+                        <div class="mx-1">
+                            <a href="/POS/tip"><button class="btn btn-sm btn-secondary">Add Tip</button></a>
+                        </div>
+                        <div class="mx-1">
+                            <form action="/sales" method="POST">
+                                <input type="hidden" name="tip" id="tip" value=0>
+                                <button class="btn btn-sm btn-success">Confirm Sale</button>
+                            </form>
+                        </div>
+                    </div>
+
+
+
+
+
+                </div>
+                <hr>
+
+                <div class="row text-black">
+                    <div>
+                        <% numItems=0 %>
+                            <% i=0 %>
+                                <% totalPrice=0 %>
+                                    <%for(item of populated.cart){ %>
+
+                                        <div class="row">
+                                            <div class="col col-2 mb-3 ">
+                                                <div>
+                                                    <strong>
+                                                        <%= item.name%>
+                                                    </strong>
+                                                </div>
+                                                <small>
+                                                    <strong>Type:</strong>
+                                                    <%= item.type %>
+                                                </small>
+                                            </div>
+                                            <div class="col-2">
+                                                <small><strong>
+                                                        Size:
+                                                    </strong>
+                                                    <%= item.type=='trees' ? `${item.size} ft`:item.size %>
+                                                </small>
+
+                                            </div>
+
+                                            <div class="col-5"></div>
+                                            <div class="row col-2">
+                                                <div>
+                                                    <strong>Price:</strong> $<%= item.price%1==0 ?
+                                                        `${item.price}.00`:item.price %>
+                                                </div>
+                                            </div>
+                                            <div class=" col-1">
+                                                <form action="/cart/<%= i %>?_method=DELETE" method="POST"><button
+                                                        class="btn btn-danger">delete</button></form>
+                                            </div>
+
+
+                                        </div>
+                                        <% i++ %>
+                                            <% numItems++ %>
+                                                <% totalPrice+=item.price %>
+                                                    <% } %>
+                                                        <!-- include custom items -->
+                                                        <% i=0 %>
+                                                            <%for(item of populated.custom){ %>
+
+                                                                <div class="row">
+                                                                    <div class="col col-2 mb-3 ">
+                                                                        <div>
+                                                                            <strong>
+                                                                                CUSTOM:
+                                                                                <%= item.name%>
+                                                                            </strong>
+                                                                        </div>
+                                                                        <small>
+                                                                            <strong>Type:</strong>
+                                                                            <%= item.type %>
+                                                                        </small>
+                                                                    </div>
+                                                                    <div class="col-2">
+                                                                        <small><strong>
+                                                                                Size:
+                                                                            </strong>
+                                                                            <%= item.type=='trees' ? `${item.size}
+                                                                                ft`:item.size %>
+                                                                        </small>
+
+                                                                    </div>
+
+                                                                    <div class="col-5"></div>
+                                                                    <div class="row col-2">
+                                                                        <div>
+                                                                            <strong>Price:</strong> $<%= item.price%1==0
+                                                                                ? `${item.price}.00`:item.price %>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class=" col-1">
+                                                                        <form
+                                                                            action="/cart/custom/<%= i %>?_method=DELETE"
+                                                                            method="POST"><button
+                                                                                class="btn btn-danger">delete</button>
+                                                                        </form>
+                                                                    </div>
+
+
+                                                                </div>
+                                                                <% i++ %>
+                                                                    <% numItems++ %>
+                                                                        <% totalPrice+=item.price %>
+                                                                            <% } %>
+
+
+
+                    </div>
+                    <hr style="border: 2px solid black;">
+                    <div class="col-2">
+                        <p><strong>Total Number of Items:</strong>
+                            <%=numItems %>
+                        </p>
+                    </div>
+                    <div class="col-2 offset-7">
+                        <p class="float-end fw-bold">Total: $<%=totalPrice%1==0 ? `${totalPrice}.00`:totalPrice %>
+                        </p>
+                    </div>
+                    <hr style="border: 2px solid black;">
+
+
+
+                </div>
+            </div>
+        </div>

@@ -1,0 +1,25 @@
+<% layout('layouts/boilerplate') %>
+
+    <div class="mb-2 row d-flex align-items-center justify-content-center"
+        style="background-color: green; height: 30%; ">
+        <% for(cat of cats){ %>
+            <div class="d-inline col-3">
+                <a href="/POS/<%= cat %>"><button
+                        class="<%= cats.length<4? 'btn-square-xl mx-4':'btn-square-lg mx-3'  %> btn btn-secondary">
+                        <%= cat %>
+                    </button></a>
+            </div>
+            <% } %>
+    </div>
+    <div class="mb-2 row d-flex align-items-center justify-content-center flex-wrap"
+        style="background-color: red; height: 30%;">
+        <% for(op of options){ %>
+            <div class="col-2">
+                <a href="/POS/<%= catagory %>/<%=op  %>"><button type="button"
+                        class="<%= options.length<6? 'btn-square-lg mx-3':'btn-square-md mx-2'  %> btn btn-secondary ">
+                        <%= op %>
+                    </button></a>
+            </div>
+            <% } %>
+    </div>
+    <div style="background-color: blue; height: 30%;"></div>

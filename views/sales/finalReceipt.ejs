@@ -1,0 +1,113 @@
+<% layout('layouts/boilerplate') %>
+    <div class="card">
+        <div class="card-body mx-2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-10">
+                        <p class="my-1 mx-0 mb-5" style="font-size: 30px;">Thank you for your purchase</p>
+                    </div>
+                    <div class="col-2"><a href="/sales/all"><button class="btn btn-secondary">Back to Sales</button></a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <ul class="list-unstyled col-12">
+                            <!-- <li class="text-black">John Doe</li> -->
+                            <li class="text-black mt-1">
+                                <%= order.date %>
+                            </li>
+                            <li class="text-black mt-1"><small><strong>order number:</strong>
+                                    <%= order._id %>
+                                </small></li>
+                        </ul>
+                    </div>
+
+
+                </div>
+                <hr>
+
+                <div class="row text-black">
+                    <div>
+                        <% i=0 %>
+                            <%for(item of order.cart){ %>
+
+                                <div class="row">
+                                    <div class="col col-2 mb-3 ">
+                                        <div>
+                                            <strong>
+                                                <%= item.name%>
+                                            </strong>
+                                        </div>
+                                        <small>
+                                            <strong>Type:</strong>
+                                            <%= item.type %>
+                                        </small>
+                                    </div>
+                                    <div class="col-2">
+                                        <small><strong>
+                                                Size:
+                                            </strong>
+                                            <%= item.type=='trees' ? `${item.size} ft`:item.size %>
+                                        </small>
+
+                                    </div>
+
+                                    <div class="col-5"></div>
+                                    <div class="row col-2">
+                                        <div>
+                                            <strong>Price:</strong> $<%= item.price%1==0 ? `${item.price}.00`:item.price
+                                                %>
+                                        </div>
+                                    </div>
+                                </div>
+                                <% } %>
+
+                                    <%for(item of order.custom){ %>
+
+                                        <div class="row">
+                                            <div class="col col-2 mb-3 ">
+                                                <div>
+                                                    <strong>
+                                                        CUSTOM:
+                                                        <%= item.name%>
+                                                    </strong>
+                                                </div>
+                                                <small>
+                                                    <strong>Type:</strong>
+                                                    <%= item.type %>
+                                                </small>
+                                            </div>
+                                            <div class="col-2">
+                                                <small><strong>
+                                                        Size:
+                                                    </strong>
+                                                    <%= item.type=='trees' ? `${item.size} ft`:item.size %>
+                                                </small>
+
+                                            </div>
+
+                                            <div class="col-5"></div>
+                                            <div class="row col-2">
+                                                <div>
+                                                    <strong>Price:</strong> $<%= item.price%1==0 ?
+                                                        `${item.price}.00`:item.price %>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <% } %>
+
+
+                    </div>
+                    <hr style="border: 2px solid black;">
+                    <div class="col-2 offset-9">
+                        <p class="float-end fw-bold">Total: $<%=order.totalPrice%1==0 ?
+                                `${order.totalPrice}.00`:order.totalPrice %>
+                        </p>
+                    </div>
+                    <hr style="border: 2px solid black;">
+
+
+
+                </div>
+            </div>
+        </div>

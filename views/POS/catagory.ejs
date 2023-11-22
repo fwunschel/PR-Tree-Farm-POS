@@ -1,0 +1,17 @@
+<% layout('layouts/boilerplate') %>
+
+    <div class="mb-2 row d-flex align-items-center justify-content-center"
+        style="background-color: green; height: 30%; ">
+
+        <% for(cat of cats){ %>
+            <div class="d-inline col-3">
+                <a href="/POS/<%= cat %>"><button
+                        class="<%= cats.length<4? 'btn-square-xl mx-4':'btn-square-lg mx-3'  %> btn btn-secondary">
+                        <%= cat %>
+                    </button></a>
+            </div>
+            <% } %>
+    </div>
+    <div class=" mb-2" style="background-color: red; height: 30%;">
+    </div>
+    <div style="background-color: blue; height: 30%;"></div>

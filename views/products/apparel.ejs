@@ -1,0 +1,47 @@
+<% layout('layouts/boilerplate') %>
+
+    <div class="d-flex item-align-center justify-content-center row">
+        <div class="border col-5 py-3">
+
+
+
+            <% if(choice) {%>
+                <div class="d-flex align-items-center justify-content-center">
+                    <% for(options of appOps){ %>
+                        <div class="px-3">
+                            <a href="<%= options.url %>">
+                                <button class="btn btn-info" <%=options.url==choice?'aria-pressed="true"' :'' %>>
+                                    <%= options.text %>
+                                </button>
+                            </a>
+                        </div>
+                        <% } %>
+                </div>
+            
+                <%- include("../partials/newproduct") %>
+                <% }else { %>
+
+                    <div class="d-flex align-items-center justify-content-center">
+                        <% for(options of appOps){ %>
+                            <div class="px-3">
+                                <a href="<%= options.url %>">
+                                    <button class="btn btn-info">
+                                        <%= options.text %>
+                                    </button>
+                                </a>
+                            </div>
+                            <% } %>
+                    </div>
+                    <% } %>
+
+
+
+
+
+
+
+
+
+        </div>
+    </div>
+    </div>

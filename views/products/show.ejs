@@ -1,0 +1,100 @@
+<% layout('layouts/boilerplate') %>
+    <% const options={ weekday: 'long' , year: 'numeric' , month: 'long' , day: 'numeric' , }; %>
+        <div class="container">
+            <h2 class="mb-3">All Product Sales:</h2>
+
+
+            <% const catagories=Array.from(new Set(allProducts.map((item)=> item.type)));%>
+                <% for(catagory of catagories){ %>
+                    <div class="row border">
+                        <h4 class="d-inline col-4 p-1">
+                            <%= catagory %>:
+                        </h4>
+
+                        <div class="d-inline offset-5 col-3 d-flex justify-content-right align-items-center">
+                            <a href="/products/add/<%=catagory  %>"><button class="btn btn-sm btn-success">
+                                    Make New <%=catagory %> Object
+                                </button></a>
+                        </div>
+                    </div>
+                    <% const catSubset=allProducts.filter(item=>item.type==catagory)%>
+                        <% const objects=Array.from(new Set(catSubset.map((item)=> item.name)))%>
+                            <% for(object of objects){ %>
+                                <% const class1=object.replace(/\s/g, '' ) %>
+                                    <div class="accordion accordion-flush mb-3" id="accordionProduct">
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="flush-heading<%=class1  %>">
+                                                <button class="accordion-button row collapsed" type="button"
+                                                    data-bs-toggle="collapse"
+                                                    data-bs-target="#flush-collapse<%=class1 %>" aria-expanded="false"
+                                                    aria-controls="flush-collapse<%=class1  %>">
+
+                                                    <%=object %>
+
+
+
+
+
+                                                </button>
+                                            </h2>
+                                            <div id="flush-collapse<%=class1  %>"
+                                                class="accordion-collapse collapse border"
+                                                aria-labelledby="flush-heading<%=class1  %>"
+                                                data-bs-parent="#accordionProduct">
+
+                                                <div class="accordion-body">
+                                                    <div class="row">
+                                                        <div class="col-1">
+                                                            <form action="/products/delete/<%=object %>?_method=DELETE"
+                                                                method="POST"><button
+                                                                    class="btn btn-danger">Delete</button></form>
+                                                        </div>
+                                                        <div class="col-2">
+                                                            <a href="/products/edit/<%= object %>"><button
+                                                                    class="btn btn-info">Edit
+                                                                    All</button></a>
+                                                        </div>
+
+                                                    </div>
+                                                    <% const itemSubset=catSubset.filter(item=>item.name==object)%>
+                                                        <% for(items of itemSubset){ %>
+                                                            <div class="row border mt-3">
+                                                                <div class="row mb-3 mt-1">
+                                                                    <div class="col-3">
+                                                                        <div>
+                                                                            <h5>
+                                                                                <%=items.name %>
+                                                                            </h5>
+                                                                        </div>
+                                                                        <div>
+                                                                            <strong>Type: </strong>
+                                                                            <%=items.type %>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="col-2"><strong>Size:</strong>
+                                                                        <%= items.type=='Trees' ? `${items.size} Ft`:
+                                                                            items.size %>
+                                                                    </div>
+                                                                    <div class="col-4"></div>
+                                                                    <div class="col-2 "><strong>Price:
+                                                                            $</strong>
+                                                                        <%= items.price%1==00? `${items.price}.00`:
+                                                                            items.price %>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                            <% }%>
+
+                                                </div>
+
+                                            </div>
+
+
+
+                                        </div>
+                                        <% } %>
+                                    </div>
+                                    <% } %>
+                                        <script src="/javascript/salesHistory.js"></script>

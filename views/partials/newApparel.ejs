@@ -1,0 +1,15 @@
+<form action="/products" method="post">
+    <label for="">Tree Variety</label>
+    <input type="text" id="name" name="name">
+
+    <% for(let i=0, i<6,i++){ %>
+        <div>
+            <label for="height<%=i+5%>">Height:</label>
+            <input type="text" id="height<%=i+5%>" name="size" value="<%=i+5%>">
+            <label for="price<%=i+5%>"></label>
+            <input type="text" id="price<%=i+5%>" name="price">
+        </div>
+        <% } %>
+            <button>Create New Tree</button>
+
+</form>

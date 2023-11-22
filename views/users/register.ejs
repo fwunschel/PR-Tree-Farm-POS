@@ -1,0 +1,83 @@
+<% layout('layouts/loginBoiler') %>
+    <div class="row justify-content-center align-items-center p-5" style="background-color: midnightblue;">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+            <div class="card" style="border-radius: 15px;">
+                <div class="card-body pr-5">
+                    <h2 class="text-uppercase text-center mb-5">Create An Account</h2>
+                    <%- include('../partials/flash')%>
+                        <form action="/register" method="POST" class=" offset-2 col-8 login-form needs-validation"
+                            novalidate>
+
+                            <div class="form-outline mb-4">
+                                <label for="name" class="form-label">Please Enter Your Name:</label>
+                                <input type="text" name="user[name]" id="name" class="form-control" required>
+                                <div class="invalid-feedback">
+                                    Please enter your name
+                                </div>
+                            </div>
+
+                            <div class="form-outline mb-4">
+                                <label for="company" class="form-label">Please Enter Company:</label>
+                                <input type="text" name="user[company]" id="company" class="form-control" required>
+                                <div class="invalid-feedback">
+                                    Company is required
+                                </div>
+                            </div>
+
+                            <div class="form-outline mb-4">
+                                <label for="country" class="form-label">Please Select Your Current Country:</label>
+                                <select id="country" name="user[country]" class="form-control" required>
+                                    <% for(country of countries){ %>
+                                        <option value="<%=country.name  %>">
+                                            <%=country.name %>
+                                                <% } %>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Please select a country
+                                </div>
+                            </div>
+
+                            <div class="form-outline mb-4">
+                                <label for="email" class="form-label">Please Enter Your Email:</label>
+                                <input type="email" name="user[email]" id="email" class="form-control" required>
+                                <div class="invalid-feedback">
+                                    A valid email with @ is required
+                                </div>
+                            </div>
+
+                            <div class="form-outline mb-4">
+                                <label for="username" class="form-label">Please Enter Your Username:</label>
+                                <input type="text" name="user[username]" id="username" class="form-control" required>
+                                <div class="invalid-feedback">
+                                    Please Provide a Username
+                                </div>
+                            </div>
+
+
+
+
+                            <div class="form-outline mb-4">
+                                <label for="password" class="form-label">Please Enter Your Password:</label>
+                                <input type="password" name="user[password]" id="password" class="form-control"
+                                    required>
+                                <div class="invalid-feedback">
+                                    Please create a unique password
+                                </div>
+                            </div>
+
+                            <div class="d-flex justify-content-center">
+                                <div class="col-5">
+                                    <button class="btn btn-success btn-block btn-lg  text-body"
+                                        style="background-color: lightgreen;font-size:1em;">Register Account</button>
+                                </div>
+                            </div>
+
+                            <p class="text-center text-muted mt-5 mb-0">Already have an account? <a href="/login"
+                                    class="fw-bold text-body"><u>Sign In</u></a></p>
+
+                        </form>
+
+                </div>
+            </div>
+        </div>
+    </div>

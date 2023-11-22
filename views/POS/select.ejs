@@ -1,0 +1,49 @@
+<% layout('layouts/boilerplate') %>
+
+
+    <div class="mb-2 row d-flex align-items-center justify-content-center"
+        style="background-color: green; height: 30%; ">
+        <% for(cat of cats){ %>
+            <div class=" d-inline col-3">
+                <a href="/POS/<%= cat %>"><button
+                        class="<%= cats.length<4? 'btn-square-xl mx-4':'btn-square-lg mx-3'  %> btn btn-secondary">
+                        <%= cat %>
+                    </button></a>
+            </div>
+            <% } %>
+    </div>
+    <div class="mb-2 row d-flex align-items-center justify-content-center flex-wrap"
+        style="background-color: red; height: 30%;">
+        <% for(op of options){ %>
+            <div class="<%= options.length<7? 'col-2':'col-1 mx-4'  %>">
+                <a href="/POS/<%= catagory %>/<%=op  %>"><button type="button"
+                        class="<%= options.length<6? 'btn-square-lg mx-3':'btn-square-md mx-2'  %> btn btn-secondary ">
+                        <%= op %>
+                    </button></a>
+            </div>
+            <% } %>
+    </div>
+    <div class="mb-2 row d-flex align-items-center justify-content-center flex-wrap"
+        style="background-color: blue; height: 30%;">
+        <% for(product of products){ %>
+            <div class="col-2">
+                <form action="/cart" method="POST">
+                    <input type="hidden" name="item" id="" value="<%=product._id  %>">
+                    <button
+                        class="<%= products.length<5? 'btn-square-lg mx-3':'btn-square-md mx-2'  %> btn btn-secondary ">
+                        <h3>
+                            <%= product.size %>
+                                <%=product.type=='trees'?'Ft':'' %>
+                        </h3>
+                        <h5>$<%= product.price%1==0 ?`${product.price}.00`:product.price %>
+                        </h5>
+                    </button>
+                </form>
+            </div>
+            <% } %>
+                <div class="col-2"><a href="/POS/<%=catagory  %>/<%=itemName  %>/custom">
+                        <button class="<%= products.length<5? 'btn-square-lg':'btn-square-md'  %> btn btn-secondary ">
+                            Custom
+                        </button></a>
+                </div>
+    </div>

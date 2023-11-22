@@ -1,0 +1,28 @@
+<% layout('layouts/boilerplate') %>
+    <div class="py-3">
+        <h3> Update an object in <%=catagory %>
+        </h3>
+    </div>
+    <form action="/products/edit" method="POST">
+        <h2>Product: <%=productName %>
+        </h2>
+        <div class="col">
+            <%for(product of products){%>
+                <div class="mb-3">
+                    <input type="hidden" name="product<%=product._id%>[_id]" id="_id<%=product._id%>"
+                        value="<%=product._id%>">
+                    <div class="d-flex form-group">
+                        <label for="price<%=product._id%>" class="form-label col-4">
+                            <strong>
+                                <%= product.catagory=='trees' ?`${product.size} Ft`:product.size %> Price:
+                            </strong>
+                        </label>
+                        <input type="text" name="product<%=product._id%>[price]" id="price<%=product._id%>"
+                            value="<%=product.price%>" class="form-control">
+                    </div>
+                </div>
+                <% } %>
+        </div>
+        <button class="btn btn-success">Update <%=productName %></button>
+
+    </form>

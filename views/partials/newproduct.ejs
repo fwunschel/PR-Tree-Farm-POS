@@ -1,0 +1,29 @@
+<div class="py-3">
+    <h3> Create a new <%=catagory %> Object</h3>
+</div>
+<form action="/products" method="POST">
+    <div>
+        <label for="pName" class="form-label">Product Name:</label>
+        <input type="text" id="pName" name="name" class="form-control mb-3">
+    </div>
+    <div class="col">
+        <%let i=1 %>
+            <%for(size of sizes){%>
+                <div class="mb-3">
+                    <input type="hidden" name="product<%=i%>[type]" id="type<%=i%>" value="<%=catagory%>">
+                    <input type="hidden" name="product<%=i%>[size]" value="<%=size%>">
+                    <div class="d-flex form-group">
+                        <label for="price<%=i%>" class="form-label col-4">
+                            <strong>
+                                <%= catagory=='trees' ?`${size} Ft`:size %> Price:
+                            </strong>
+                        </label>
+                        <input type="text" name="product<%=i%>[price]" id="price<%=i%>" value="0.00"
+                            class="form-control">
+                    </div>
+                </div>
+                <% i++ %>
+                    <% } %>
+    </div>
+    <button class="btn btn-success">Create Product</button>
+</form>

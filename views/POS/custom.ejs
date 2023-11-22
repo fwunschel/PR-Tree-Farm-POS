@@ -1,0 +1,54 @@
+<% layout('layouts/boilerplate') %>
+    <div class="vh-100 row justify-content-center align-items-center" style="background-color: midnightblue;">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+            <div class="card" style="border-radius: 15px;">
+                <div class="card-body p-5">
+
+                    <h3 class="mb-5">Add a Custom: <%=itemName %>
+                    </h3>
+
+
+                    <%- include('../partials/flash')%>
+                        <form action="/cart/custom" method="POST">
+                            <input type="hidden" name="item[type]" id="catagory" value="<%=catagory %>">
+                            <input type="hidden" name="item[name]" id="name" value="<%=itemName  %>">
+                            <h4 class="mb-3">Pick a size:</h4>
+                            <% if(catagory=='trees' ){ %>
+                                <% for(let i=2;i<11;i++) {%>
+                                    <div class="mb-3 text-center">
+                                        <input type="radio" id="size<%=i  %>" name="item[size]" value="<%=i  %>"
+                                            class="btn-check">
+                                        <label for="size<%=i  %>" class="btn btn-outline-primary btn-lg">
+                                            <%=i %> Ft
+                                        </label>
+                                        <% } %>
+                                    </div>
+                                    <% }else{ %>
+                                        <% sizes=['XS','S','M','L','XL','XXL'] %>
+                                            <div class="mb-3 text-center">
+                                                <% for(size of sizes) {%>
+
+                                                    <input class="btn-check" type="radio" id="size<%=size %>"
+                                                        name="item[size]" value="<%=size  %>">
+                                                    <label for="size<%=size  %>" class="btn btn-outline-primary btn-lg">
+                                                        <%=size %>
+                                                    </label>
+
+                                                    <% } %>
+                                            </div>
+                                            <% } %>
+                                                <br>
+                                                <label for="price" class="form-label mb-1 ">Set Custom
+                                                    Price:</label>
+                                                <input type="text" name="item[price]" id="price" placeholder="0.00"
+                                                    class="form-control mb-3">
+
+                                                <button class="btn btn-success">Add to Cart</button>
+
+
+                        </form>
+
+                </div>
+            </div>
+        </div>
+    </div>

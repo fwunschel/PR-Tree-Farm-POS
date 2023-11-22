@@ -1,0 +1,114 @@
+<% layout('layouts/boilerplate') %>
+    <% const options={ weekday: 'long' , year: 'numeric' , month: 'long' , day: 'numeric' , }; %>
+        <div class="container">
+            <h2 class="mb-3">
+                <%= timeline %> Product Sales:
+            </h2>
+
+            <div class="accordion accordion-flush" id="accordionProduct">
+                <% for(sale of sales){ %>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-heading<%=sale._id  %>">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#flush-collapse<%=sale._id  %>" aria-expanded="false"
+                                aria-controls="flush-collapse<%=sale._id  %>">
+                                <div class="col-4">
+                                    <div class="col"></div>
+                                    <h6>Order: <small>#<%=sale._id %></small></h6>
+                                    <div>date: <small class="text-muted">
+                                            <%= sale.date.toLocaleDateString(options) %>
+                                        </small></div>
+
+                                </div>
+                                <div class="col-3 offset-1">
+
+                                </div>
+                                <div class="col-2">
+                                    <small>Number of Items: <%= sale.cart.length %></small>
+                                </div>
+                                <div class="col-3"><strong>Total Price:</strong> $<%=sale.totalPrice%1==0?
+                                        `${sale.totalPrice}.00`:sale.totalPrice %>
+                                </div>
+                            </button>
+                        </h2>
+                        <div id="flush-collapse<%=sale._id  %>" class="accordion-collapse collapse border"
+                            aria-labelledby="flush-heading<%=sale._id  %>" data-bs-parent="#accordionProduct">
+                            <div class="accordion-body">
+                                <% for(item of sale.cart){ %>
+                                    <div class="row border mt-3">
+                                        <div class="col-4 col">
+                                            <div><strong>Item:</strong>
+                                                <%=item.name %>
+                                            </div>
+                                            <div><small><strong>Type:</strong>
+                                                    <%=item.type %>
+                                                </small></div>
+                                        </div>
+                                        <div class="col-4">
+                                            size:
+                                            <%=item.type=='trees'? `${item.size} ft`:item.size %>
+                                        </div>
+                                        <div class="col-2"></div>
+                                        <div class="col-2">
+                                            price: $
+                                            <%=item.price%1==0? `${item.price}.00`: item.price %>
+                                        </div>
+                                    </div>
+                                    <% }%>
+                                        <% for(item of sale.custom){ %>
+                                            <div class="row border mt-3">
+                                                <div class="col-4 col">
+                                                    <div><strong>Item:</strong>
+                                                        <small><strong> CUSTOM </strong></small>
+                                                        <%=item.name %>
+                                                    </div>
+                                                    <div><small><strong>Type:</strong>
+                                                            <%=item.type %>
+                                                        </small></div>
+                                                </div>
+                                                <div class="col-4">
+                                                    size:
+                                                    <%=item.type=='trees'? `${item.size} ft`:item.size %>
+                                                </div>
+                                                <div class="col-2"></div>
+                                                <div class="col-2">
+                                                    price: $
+                                                    <%=item.price%1==0? `${item.price}.00`: item.price %>
+                                                </div>
+                                            </div>
+                                            <% }%>
+                                                <div class="row border mt-3 mb-3">
+                                                    <div class="col-4">
+                                                        <div><strong>Item:</strong>
+                                                            Tip
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-4">
+                                                    </div>
+                                                    <div class="col-2"></div>
+                                                    <div class="col-2">
+                                                        price: $
+                                                        <%=sale.tip%1==0? `${sale.tip}.00`: sale.tip %>
+                                                    </div>
+                                                </div>
+                                                <div class="offset-10 btn-group d-flex align-items-center">
+                                                    <div class="mx-3">
+                                                        <a href="/sales/<%=sale._id  %>"><button
+                                                                class="btn btn-sm btn-info">
+                                                                Receipt</button></a>
+                                                    </div>
+                                                    <form action="/sales/delete/<%=sale._id  %>?_method=DELETE"
+                                                        method="POST">
+                                                        <button class="btn btn-danger">&#xF5DE</button>
+                                                    </form>
+
+                                                </div>
+                            </div>
+
+                        </div>
+
+                        <% } %>
+                    </div>
+
+            </div>
+            <script src="/javascript/salesHistory.js"></script>

@@ -1,0 +1,99 @@
+<div class="row flex-nowrap">
+    <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+        <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+            <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                <span class="fs-5 d-none d-sm-inline">Menu</span>
+            </a>
+            <div class="text-muted offset-1"><small>Welcome <%= currentUser.username %>!</small>
+            </div>
+            <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                <li class="nav-item">
+                    <a href="/" class="nav-link align-middle px-0">
+                        <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a data-bs-toggle="collapse" class="nav-link px-0 align-middle" href=".dashboard-collapse">
+                        <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">POS
+                            System</span>
+                    </a>
+                    <ul class="collapse show nav flex-column ms-3">
+                        <li>
+                            <a href=" /POS" class="nav-link px-0 collapse dashboard-collapse"> <span
+                                    class="d-none d-sm-inline text-white ">POS
+                                    Main</span> </a>
+                        </li>
+                        <li>
+                            <a href="/POS/trees" class="nav-link px-0 collapse dashboard-collapse">
+                                <span class="d-none d-sm-inline text-white">Trees
+                                </span> </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="/cart" class="nav-link align-middle px-0">
+                        <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Cart</span>
+                    </a>
+                </li>
+                <li>
+                    <a data-bs-toggle="collapse" class="nav-link px-0 align-middle " href=".orders-collapse">
+                        <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Sales</span>
+                    </a>
+                    <ul class="collapse show nav flex-column ms-3 collapsed">
+                        <li>
+                            <a href=" /sales/today" class="nav-link px-0 collapse orders-collapse"> <span
+                                    class="d-none d-sm-inline text-white ">Today's Sales</span> </a>
+                        </li>
+                        <li>
+                            <a href="/sales/all" class="nav-link px-0 collapse orders-collapse"> <span
+                                    class="d-none d-sm-inline text-white">All Sales
+                                </span> </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a data-bs-toggle="collapse" class="nav-link px-0 align-middle" href=".products-collapse">
+                        <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Products</span>
+                    </a>
+                    <ul class="collapse show nav flex-column ms-3">
+                        <li>
+                            <a href=" /products/index" class="nav-link px-0 collapse products-collapse">
+                                <span class="d-none d-sm-inline text-white ">All Products</span> </a>
+                        </li>
+                        <li>
+                            <a href="/products/add/trees" class="nav-link px-0 collapse products-collapse">
+                                <span class="d-none d-sm-inline text-white">Add Tree
+                                </span> </a>
+                        </li>
+                        <li>
+                            <a href="/products/add/decorations" class="nav-link px-0 collapse products-collapse">
+                                <span class="d-none d-sm-inline text-white">Add Decoration
+                                </span> </a>
+                        </li>
+                        <li>
+                            <a href="/products/add/apparel" class="nav-link px-0 collapse products-collapse"> <span
+                                    class="d-none d-sm-inline text-white">Add Apparel
+                                </span> </a>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+            <div class="col-2 offset-2"><a href="/logout">
+                    <button type="button" class="btn btn-light">Logout</button>
+
+                </a>
+            </div>
+            <hr>
+
+
+            <div></div>
+        </div>
+    </div>
+    <div class=" col-10 py-3 h-100 border">
+        <%- include('../partials/flash')%>
+
+            <%- body %>
+
+    </div>
+</div>
