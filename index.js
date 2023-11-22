@@ -47,10 +47,10 @@ const salesRoutes = require('./routes/sales')
 const userRoutes = require('./routes/users')
 
 
-const localUrl = 'mongodb://127.0.0.1:27017/PR-tree-farm'
-const prodUrl = process.env.DB_Url
+
+const prodUrl = process.env.DB_URL || 'mongodb://127.0.0.1:27017/PR-tree-farm'
 //mongoose bootup
-mongoose.connect(localUrl)
+mongoose.connect(prodUrl)
     .then(() => {
         console.log('Mongo Connection Open');
     }).catch(err => {
@@ -70,21 +70,21 @@ app.use(methodOverride('_method'));
 app.use(express.urlencoded({ extended: true }));
 
 app.use(mongoSanitize());
-// app.use(helmet());
-// const store=new Mongo
+
+const secret = process.env.secret || 'thisshouldbeabettersecret!'
 
 const store = MongoStore.create({
-    mongoUrl: localUrl,
+    mongoUrl: prodUrl,
     touchAfter: 24 * 60 * 60,
     crypto: {
-        secret: 'thisshouldbeabettersecret!'
+        secret
     }
 });
 
 const sessionConfig = {
     store,
     name: 'holder726',
-    secret: 'ThisIsABadSecret',
+    secret,
     resave: false,
     saveUninitialized: true,
     cookie: {
