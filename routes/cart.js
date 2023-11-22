@@ -12,8 +12,8 @@ router.post('/', isLoggedIn, catchAsync(cart.addItem))
 router.delete('/:indexId', isLoggedIn, catchAsync(cart.deleteItem))
 
 
-router.post('/custom', catchAsync(cart.customAdd))
+router.post('/custom', isLoggedIn, catchAsync(cart.customAdd))
 
-router.delete('/custom/:indexId', catchAsync(cart.customDelete))
+router.delete('/custom/:indexId', isLoggedIn, catchAsync(cart.customDelete))
 
 module.exports = router;
