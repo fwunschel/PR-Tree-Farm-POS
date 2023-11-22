@@ -1,4 +1,7 @@
 {
+  "engines": {
+    "node": "18.13.0"
+  },
   "name": "treefarmpos",
   "version": "1.0.0",
   "description": "A Basic POS system for a friends local business",
