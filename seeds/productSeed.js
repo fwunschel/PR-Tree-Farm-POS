@@ -1,6 +1,6 @@
 const Product = require('../models/products');
 const mongoose = require('mongoose');
-const prodUrl = "mongodb+srv://wunschelf:DB4b1flGsk!@pr-tree-farm.o3llpdj.mongodb.net/?retryWrites=true&w=majority" || 'mongodb://127.0.0.1:27017/PR-tree-farm'
+const prodUrl = "mongodb+srv://insert_seed_here!@pr-tree-farm.o3llpdj.mongodb.net/?retryWrites=true&w=majority" || 'mongodb://127.0.0.1:27017/PR-tree-farm'
 //remember to start up mongo db using brew service start mongodb-community@7.0 in terminal
 mongoose.connect(prodUrl)
     .then(() => {
