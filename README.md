@@ -12,20 +12,20 @@ Below I have included some screenshots of the app during the initial launch :
 ### Home Screen
 Once Logged In you  will be greeted by this scren:
 
-![alt txt](https://github.com/fwunschel/PR-Tree-Farm-POS/tree/main/AppScreenShots/HomeScreen.png)
+![Home Screen](https://github.com/fwunschel/PR-Tree-Farm-POS/tree/main/AppScreenShots/HomeScreen.png)
 
 
 ### Initial Product Screen
-![alt txt](https://github.com/fwunschel/PR-Tree-Farm-POS/tree/main/AppScreenShots/ProductOptionScreen.png)
+![Product Screen](https://github.com/fwunschel/PR-Tree-Farm-POS/tree/main/AppScreenShots/ProductOptionScreen.png)
 
 
 ### Product Screen Clicked Through to Size
-![alt txt](https://github.com/fwunschel/PR-Tree-Farm-POS/tree/main/AppScreenShots/ProductSizeScreen.png)
+![Product Sizes](https://github.com/fwunschel/PR-Tree-Farm-POS/tree/main/AppScreenShots/ProductSizeScreen.png)
 
 
 ### Purchase Receipt
-![alt txt](https://github.com/fwunschel/PR-Tree-Farm-POS/tree/main/AppScreenShots/ReceiptScreen.png)
+![Receipt](https://github.com/fwunschel/PR-Tree-Farm-POS/tree/main/AppScreenShots/ReceiptScreen.png)
 
 
 ### Cart Screen
-![alt txt](https://github.com/fwunschel/PR-Tree-Farm-POS/tree/main/AppScreenShots/CartScreen.png)
+![Cart](https://github.com/fwunschel/PR-Tree-Farm-POS/tree/main/AppScreenShots/CartScreen.png)
